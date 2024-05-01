@@ -80,10 +80,10 @@ public class BoxServiceTest {
 		 BoxRequest boxRequest = new BoxRequest(50, 70.5);
 		 Box box = boxService.createBox(boxRequest);
 
-		 Item item = new Item("Panadol", "AAA-122", 5.5);
-		 Item item1 = new Item("Cafein", "AAA-133", 4.5);
-		 Item item2 = new Item("Procold", "AAA-144", 5.7);
-		 Item item3= new Item("Bodqzol", "AAA-155", 3.2);
+		 Item item = new Item("Panadol", "AAA_122", 5.5);
+		 Item item1 = new Item("Cafein", "AAA_133", 4.5);
+		 Item item2 = new Item("Procold", "AAA_144", 5.7);
+		 Item item3= new Item("Bodqzol", "AAA_155", 3.2);
 		 List<Item> items = new ArrayList<>();
 		 items.add(item);
 		 items.add(item1);

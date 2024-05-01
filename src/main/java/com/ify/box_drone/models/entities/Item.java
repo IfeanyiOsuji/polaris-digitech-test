@@ -16,7 +16,11 @@ public class Item {
 
     public Item(String name, String code, double weight) {
         this.id = UUID.randomUUID().toString().substring(15);
+        if (!name.matches("[a-zA-Z0-9_-]*$"))
+            throw new NullPointerException("Name can only contain alphabets, numbers, _ and -");
         this.name = name;
+        if(!code.matches("[A-Z0-9_]*"))
+            throw new NullPointerException("Code can only contain Uppercase letters, Numbers, _ and -");
         this.code = code;
         this.weight = weight;
     }
