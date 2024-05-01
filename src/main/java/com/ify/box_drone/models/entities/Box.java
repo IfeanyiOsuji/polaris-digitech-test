@@ -2,16 +2,14 @@ package com.ify.box_drone.models.entities;
 
 import com.ify.box_drone.models.enums.State;
 import jakarta.persistence.*;
-import org.springframework.boot.autoconfigure.web.WebProperties;
+import org.hibernate.annotations.Fetch;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
+
 
 @Entity
 public class Box {
     @Id
-    private String id;
-    @Column(length = 20)
     private String txref;
 
     @Column(name = "weightInGrams")
@@ -21,21 +19,22 @@ public class Box {
     @Enumerated(value = EnumType.STRING)
     private State state;
 
-    private List<Item> loadedItems;
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Item> loadedItems = new ArrayList<>();
 
-    public Box(int weight, double batteryCapacity) {
-        this.id = UUID.randomUUID().toString().substring(25);
+    public Box(double weight, double batteryCapacity) {
+        this.txref = generateShortUUID();
         this.state = State.IDLE;
         this.weight = weight;
         this.batteryCapacity = batteryCapacity;
     }
 
-    public String getTxref() {
-        return txref;
+    public Box() {
+        this.txref = generateShortUUID();
     }
 
-    public void setTxref(String txref) {
-        this.txref = txref;
+    public String getTxref() {
+        return txref;
     }
 
     public double getWeight() {
@@ -68,6 +67,22 @@ public class Box {
 
     public void setLoadedItems(List<Item> loadedItems) {
         this.loadedItems = loadedItems;
+    }
+
+    private String generateShortUUID() {
+        return  UUID.randomUUID().toString().substring((int)Math.round(21.0));
+
+    }
+
+    @Override
+    public String toString() {
+        return "Box{" +
+                "txref='" + txref + '\'' +
+                ", weight=" + weight +
+                ", batteryCapacity=" + batteryCapacity +
+                ", state=" + state +
+                ", loadedItems=" + loadedItems +
+                '}';
     }
 }
 
