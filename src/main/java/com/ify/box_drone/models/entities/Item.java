@@ -12,13 +12,16 @@ public class Item {
     private String id;
     private String name;
     private String code;
-    private int weight;
+    private double weight;
 
-    public Item(String name, String code, int weight) {
-        this.id = UUID.randomUUID().toString().substring(25);
+    public Item(String name, String code, double weight) {
+        this.id = UUID.randomUUID().toString().substring(15);
         this.name = name;
         this.code = code;
         this.weight = weight;
+    }
+    public Item(){
+        this.id = UUID.randomUUID().toString().substring(15);
     }
 
     public String getName() {
@@ -41,8 +44,18 @@ public class Item {
         this.code = code;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", code='" + code + '\'' +
+                ", weight=" + weight +
+                '}';
     }
 }
 
