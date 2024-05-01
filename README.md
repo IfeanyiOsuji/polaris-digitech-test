@@ -18,27 +18,36 @@ This is a server side project so in order to set up the project, you need to JDK
 To run this project, make sure you have JDK 15 or higher installed
 
 1. Clone the repository:
-   git clone https://github.com/IfeanyiOsuji/Drone-App.git
+   git clone https://github.com/IfeanyiOsuji/polaris-digitech-test.git
 
 2. Navigate to the project directory
-   cd Drone-App
+   cd box_drone
 
 Compile the Java files
-javac DroneServiceApplication.java
+javac BoxDroneApplication.java
 or
 Click on the run button at the top right if you are using vs code or intellij idea
 
 4. Run the program
-   java DroneServiceApplication.java
+   java BoxDroneApplication.java
 
 If the code runs successfully, you can use postman to call the endpoints
 
 ## Example
-1. To register a drone:
-   http://localhost:8282/api/v1/DroneService/register
+1. To create a box:
+   http://localhost:8282/api/v1/box/create-box
 
-2. To load medications to a drone:
-   http://localhost:8282/api/v1/DroneService/loadMedications/id/3a82a30cc82
+2. To load a box with items:
+   http://localhost:8282/api/v1/box/items/id/{txref}
 
-3. To check drones available for loading:
-   http://localhost:8282/api/v1/DroneService/availabledrones
+3. To check available boxes for loading:
+   http://localhost:8282/api/v1/box/available-boxes
+
+4. To check battery level for a given box
+   http://localhost:8282/api/v1/box/box/batterylevel/id/{txref}
+
+5. To check loaded items for a given box
+   http://localhost:8282/api/v1/box/items/box/id/{txref}
+
+## Note:
+The input data are in json format
